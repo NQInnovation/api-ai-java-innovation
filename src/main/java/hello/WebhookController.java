@@ -40,7 +40,7 @@ public class WebhookController {
         		 String text = "No you cannot change your contribution rate for Excess plan";
         		 return new WebhookResponse(text, text);
         	 }
-        		  	 
+       
          }        
          return new WebhookResponse("Not Welcome Intent", " Not Welcome Intent");
     }
@@ -58,14 +58,13 @@ public class WebhookController {
 	public String execStmtForContributionRateChange (Connection connection, String empid) throws SQLException {
 		Statement st =null;
 		st = connection.createStatement();
-		ResultSet rs = st.executeQuery("SELECT plantype from Employee where empid = " +empid);
+		ResultSet rs = st.executeQuery("SELECT plantype from test where empid = " +empid);
 		String plantype = null;
 		while (rs.next()) {
 			plantype = rs.getString("plantype");
 		}
 		
 		return plantype;
-		
 		
 	}
 }
