@@ -31,7 +31,7 @@ public class WebhookController {
         // For contribution rate change
          if (apiPojo.getResult().getAction().equals("contributionRateChange")) {
         	 Connection connection = getDatabaseConnection();
-        	 String empid = apiPojo.getResult().getParameters().getEmpid();
+        	 int empid = apiPojo.getResult().getParameters().getEmpid();
         	 String plantype = execStmtForContributionRateChange(connection, empid);
         	 if (plantype.equals("457(b)")) {
         		String text = "Yes, you can change the contribution rate for a 457(b) plan using the Change Deferral link on the Plan Dashboard";
@@ -55,7 +55,7 @@ public class WebhookController {
 		return connection;
 	}
 	
-	public String execStmtForContributionRateChange (Connection connection, String empid) throws SQLException {
+	public String execStmtForContributionRateChange (Connection connection, int empid) throws SQLException {
 		Statement st =null;
 		st = connection.createStatement();
 		ResultSet rs = st.executeQuery("SELECT plantype from test where empid = " +empid);

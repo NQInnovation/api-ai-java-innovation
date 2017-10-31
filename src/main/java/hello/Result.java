@@ -4,13 +4,13 @@ package hello;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonAnyGetter;
+import org.codehaus.jackson.annotate.JsonAnySetter;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -24,7 +24,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "fulfillment",
     "score"
 })
-@JsonIgnoreProperties(ignoreUnknown=true)
 public class Result {
 
     @JsonProperty("source")
@@ -38,7 +37,7 @@ public class Result {
     @JsonProperty("parameters")
     private Parameters parameters;
     @JsonProperty("contexts")
-    private List<Object> contexts = null;
+    private List<Context> contexts = null;
     @JsonProperty("metadata")
     private Metadata metadata;
     @JsonProperty("fulfillment")
@@ -99,12 +98,12 @@ public class Result {
     }
 
     @JsonProperty("contexts")
-    public List<Object> getContexts() {
+    public List<Context> getContexts() {
         return contexts;
     }
 
     @JsonProperty("contexts")
-    public void setContexts(List<Object> contexts) {
+    public void setContexts(List<Context> contexts) {
         this.contexts = contexts;
     }
 

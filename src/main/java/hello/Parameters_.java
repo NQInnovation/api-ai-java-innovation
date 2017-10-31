@@ -13,12 +13,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "empid"
+    "empid",
+    "empid.original"
 })
-public class Parameters {
+public class Parameters_ {
 
     @JsonProperty("empid")
     private Integer empid;
+    @JsonProperty("empid.original")
+    private String empidOriginal;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -30,6 +33,16 @@ public class Parameters {
     @JsonProperty("empid")
     public void setEmpid(Integer empid) {
         this.empid = empid;
+    }
+
+    @JsonProperty("empid.original")
+    public String getEmpidOriginal() {
+        return empidOriginal;
+    }
+
+    @JsonProperty("empid.original")
+    public void setEmpidOriginal(String empidOriginal) {
+        this.empidOriginal = empidOriginal;
     }
 
     @JsonAnyGetter
