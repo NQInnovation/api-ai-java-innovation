@@ -23,6 +23,8 @@ public class Status {
     private Integer code;
     @JsonProperty("errorType")
     private String errorType;
+    @JsonProperty("errorDetails")
+    private String errorDetails;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -44,6 +46,16 @@ public class Status {
     @JsonProperty("errorType")
     public void setErrorType(String errorType) {
         this.errorType = errorType;
+    }
+    
+    @JsonProperty("errorDetails")
+    public String getErrorDetails() {
+        return errorDetails;
+    }
+
+    @JsonProperty("errorDetails")
+    public void setErrorDetails(String errorDetails) {
+        this.errorDetails = errorDetails;
     }
 
     @JsonAnyGetter
